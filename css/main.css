@@ -1,0 +1,28 @@
+body
+{
+	text-align:center;
+	font-family:"Arial";
+}
+
+.button
+{
+	background-color:purple;
+	color:white;
+	max-width:50%;
+	min-height:50px;
+	left:0px;
+	right:0px;
+	margin-left:auto;
+	margin-right:auto;
+	
+	font-size:20px;
+
+	/** border things **/
+	border-radius:5px;
+	border:2px solid black;
+}
+
+.button:hover
+{
+	background-color:black;
+}
