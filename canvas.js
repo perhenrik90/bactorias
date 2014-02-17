@@ -3,6 +3,7 @@
  *
  * @author Per-Henrik Kvalnes
  ********************************/
+updateRate = 100;
 
 function gameCanvas( canvas )
 {
@@ -21,6 +22,21 @@ function gameCanvas( canvas )
 		y = player.ypos;
 		ctx.fillRect(x,y,100,100);
 	}
+
+
+	function updateForce()
+	{
+		player.updateForce();
+	}
+	setInterval(updateForce, updateRate);
 	player.onDraw = onDraw;
 	onDraw();	
+
+	//
+	// CONTROLLER CODE
+	//
+	canvas.onclick = function(e)
+	{
+		player.pushForce();
+	}
 }

@@ -7,8 +7,10 @@ function createPlayerModel()
 {
 	var obj = new Object();
 
-	obj.xpos = 0;
-	obj.ypos = 0;
+	obj.xpos   	= 0;
+	obj.ypos   	= 0;
+	obj.yforce 	= 0;
+	obj.yforcemax	= 4;
 	obj.imgsrc = "img/bakterie.png";
 
 
@@ -31,5 +33,28 @@ function createPlayerModel()
 		this.ypos = y;
 		if(this.onDraw){this.onDraw();}
 	}
+
+	// update the normal force
+	obj.updateForce = function()
+	{
+		y = parseInt(this.yforce);
+		if(y <= this.yforcemax)
+		{
+			obj.yforce += 0.2;
+		}
+		obj.ypos += obj.yforce;
+		if(this.onDraw){this.onDraw();}
+	}	
+	
+	// push the player upwards
+	obj.pushForce = function()
+	{
+		yforce = parseInt( this.yforce);
+		if(yforce > -this.yforcemax)
+		{
+			obj.yforce -= 4;
+		}
+	}
+
 	return obj;
 }
