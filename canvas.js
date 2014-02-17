@@ -20,7 +20,11 @@ function gameCanvas( canvas )
 
 		x = player.xpos;
 		y = player.ypos;
-		ctx.fillRect(x,y,100,100);
+		i = player.imgid;
+
+		img = document.getElementById(i);
+	
+		ctx.drawImage(img, x, y);
 	}
 
 
