@@ -3,7 +3,7 @@
  *
  * @author Per-Henrik Kvalnes
  ********************************/
-updateRate = 100;
+updateRate = 40;
 
 function gameCanvas( canvas )
 {
@@ -22,7 +22,8 @@ function gameCanvas( canvas )
 		y = player.ypos;
 		i = player.imgid;
 
-		img = document.getElementById(i);
+		img = new Image();
+		img.src = "img/bakterie.png";
 	
 		ctx.drawImage(img, x, y);
 	}
@@ -38,9 +39,6 @@ function gameCanvas( canvas )
 
 	function initBitmaps()
 	{
-		img = document.createElement("img");
-		img.id = "playerbact";		
-		img.src = "img/bakterie.png";
 	}
 	initBitmaps();
 
