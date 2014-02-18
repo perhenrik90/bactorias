@@ -36,6 +36,14 @@ function gameCanvas( canvas )
 	player.onDraw = onDraw;
 	onDraw();	
 
+	function initBitmaps()
+	{
+		img = document.createElement("img");
+		img.id = "playerbact";		
+		img.src = "img/bakterie.png";
+	}
+	initBitmaps();
+
 	//
 	// CONTROLLER CODE
 	//
