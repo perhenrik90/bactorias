@@ -50,6 +50,5 @@ function createWorld()
 		}
 	}
 
-
 	return worldArray;
 }

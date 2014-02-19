@@ -10,6 +10,10 @@ viewUpdateGap = 100;
 
 function gameCanvas( canvas )
 {
+	running = true;
+
+	xLast = 32;
+	yLast = 12;
 
 	blockWidth = canvas.width / 32;
 	blockHeight = canvas.height /12;	
@@ -60,10 +64,14 @@ function gameCanvas( canvas )
 		
 			x2	= blockWidth;
 			y2	= blockHeight;
+
 			if(x1 < canvas.width)
 			{
 				ctx.drawImage(imgWall, x1, y1, x2, y2);
+				doCrash = checkCollition( wall.xpos, wall.ypos);
+				if(doCrash){ running = false;}
 			}
+
 		}
 		updateView();
 	}
@@ -77,15 +85,37 @@ function gameCanvas( canvas )
 		}
 	}
 
-
 	function updateForce()
 	{
-		player.updateForce();
+		if(running)
+		{
+			player.updateForce();
+		}
 	}
 	setInterval(updateForce, updateRate);
 	player.onDraw = onDraw;
 	onDraw();	
 
+	function checkCollition( x, y )
+	{
+		var c = false;
+
+		xoffset = player.xpos + 64;
+		xoffset = parseInt(xoffset / blockWidth);
+	
+		yoffset = player.ypos + 64;
+		yoffset = parseInt(yoffset / blockHeight);
+
+		if( xoffset == x)
+		{
+			if( yoffset == y)
+			{
+				return true;
+			}
+		}
+		console.log(xoffset+ " "+x+"\n"+yoffset+" "+y);
+		return c;
+	}
 
 	//
 	// CONTROLLER CODE
