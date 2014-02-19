@@ -4,22 +4,26 @@
  * @author Per-Henrik Kvalnes
  ********************************/
 updateRate = 40;
-blockWidth = 32;
-blockHeight = 32;
+blockWidth = 64;
+blockHeight = 64;
+viewUpdateGap = 100;
 
 function gameCanvas( canvas )
 {
+
+	blockWidth = canvas.width / 32;
+	blockHeight = canvas.height /12;	
 	// get context
 	ctx = canvas.getContext("2d");
 
 	// init view variables
-	viewposx = 100;
+	viewposx = 0;
 	viewposy = 0;
 
 	// create models
 	player = createPlayerModel();
-	player.setX(250);
-	player.setY(10);
+	player.setX(2);
+	player.setY(200);
 
 	world = createWorld();
 	
@@ -52,12 +56,24 @@ function gameCanvas( canvas )
 		{
 			wall 	= world[i];
 			x1	= (wall.xpos*blockWidth)-viewposx;
-			y1	= (wall.ypos*blockWidth)-viewposy;
+			y1	= (wall.ypos*blockHeight)-viewposy;
 		
 			x2	= blockWidth;
 			y2	= blockHeight;
+			if(x1 < canvas.width)
+			{
+				ctx.drawImage(imgWall, x1, y1, x2, y2);
+			}
+		}
+		updateView();
+	}
 
-			ctx.drawImage(imgWall, x1, y1, x2, y2);
+	function updateView()
+	{
+		xrelative = player.xpos - viewposx; 	
+		if(xrelative > canvas.width/2)
+		{
+			viewposx += viewUpdateGap;
 		}
 	}
 
@@ -70,10 +86,6 @@ function gameCanvas( canvas )
 	player.onDraw = onDraw;
 	onDraw();	
 
-	function initBitmaps()
-	{
-	}
-	initBitmaps();
 
 	//
 	// CONTROLLER CODE

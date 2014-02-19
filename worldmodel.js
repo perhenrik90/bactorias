@@ -1,9 +1,10 @@
 /*****************************
- * WALL MODEL
+ * WORLD MODEL
  * 
  * @author Per-Henrik Kvalnes
  *
  ******************************/
+
 function createWall(xpos, ypos)
 {
 	obj 		= new Object();
@@ -15,17 +16,21 @@ function createWall(xpos, ypos)
 }
 
 
+/** create a list of world elements **/
 function createWorld()
 {
 	worldArray = [];
-	worldLength = 32;
+	worldLength = 512;
+
+	// define the viewport of the model
 	yLast	= 12;
+	xLast	= 32;
 	
 
 	for(i = 0; i < worldLength; i++)
 	{
 		/** create topwall **/
-		topWall = parseInt(Math.random()*3);
+		topWall = parseInt(Math.random()*5);
 		topWall = Math.abs(topWall);
 		
 		for(x = topWall; x >= 0; x--)
@@ -34,7 +39,7 @@ function createWorld()
 			worldArray.push(w);
 		}
 
-		bottomWall = parseInt(Math.random()*3);
+		bottomWall = parseInt(Math.random()*5);
 		bottomWall = Math.abs(topWall);
 		bottomWall = yLast-bottomWall;
 		

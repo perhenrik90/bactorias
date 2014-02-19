@@ -11,6 +11,7 @@ function createPlayerModel()
 	obj.ypos   	= 0;
 	obj.yforce 	= 0;
 	obj.yforcemax	= 4;
+	obj.xforce	= 3;
 	obj.type	= "player"
 	obj.imgid = "playerbact";
 
@@ -39,11 +40,12 @@ function createPlayerModel()
 	obj.updateForce = function()
 	{
 		y = parseInt(this.yforce);
-		if(y <= this.yforcemax)
+		if(obj.yforce <= this.yforcemax)
 		{
 			obj.yforce += 0.2;
 		}
 		obj.ypos += obj.yforce;
+		obj.xpos += obj.xforce;
 		if(this.onDraw){this.onDraw();}
 	}	
 	
