@@ -14,18 +14,37 @@ function createWall(xpos, ypos)
 	return obj;
 }
 
+
 function createWorld()
 {
-	world = [];
+	worldArray = [];
+	worldLength = 32;
+	yLast	= 12;
+	
 
-	for(i = 0; i < 10; i++)
+	for(i = 0; i < worldLength; i++)
 	{
-		w = createWall(i, 0);
-		world.push(w);
+		/** create topwall **/
+		topWall = parseInt(Math.random()*3);
+		topWall = Math.abs(topWall);
+		
+		for(x = topWall; x >= 0; x--)
+		{
+			w = createWall(i, x);
+			worldArray.push(w);
+		}
+
+		bottomWall = parseInt(Math.random()*3);
+		bottomWall = Math.abs(topWall);
+		bottomWall = yLast-bottomWall;
+		
+		for(x = bottomWall; x <= yLast; x++)
+		{
+			w = createWall(i, x);
+			worldArray.push(w);
+		}
 	}
-	world.push( createWall(1,2));
 
-	world.push( createWall(4,2));
 
-	return world;
+	return worldArray;
 }
