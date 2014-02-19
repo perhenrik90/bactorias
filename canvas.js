@@ -4,6 +4,7 @@
  * @author Per-Henrik Kvalnes
  ********************************/
 updateRate = 40;
+blockWidth = 32;
 
 function gameCanvas( canvas )
 {
@@ -12,6 +13,8 @@ function gameCanvas( canvas )
 	player = createPlayerModel();
 	player.setX(250);
 	player.setY(10);
+
+	world = createWorld();
 	
 	/** called from models when updated **/
 	function onDraw()
@@ -26,6 +29,23 @@ function gameCanvas( canvas )
 		img.src = "img/bakterie.png";
 	
 		ctx.drawImage(img, x, y);
+ 
+		/** draw world **/
+		imgWall = new Image();
+		imgWall.src = "img/wall.png";
+
+		for(i = 0; i < world.length; i ++)
+		{
+			wall 	= world[i];
+			x1	= wall.xpos*blockWidth;
+			y1	= wall.ypos*blockWidth;
+		
+			x2	= x1 + blockWidth;
+			y2	= y1 + blockWidth;
+
+			console.log("X1: "+ x1 + " X2: "+x2);
+			ctx.drawImage(imgWall, x1, y1, x2, y2);
+		}
 	}
 
 

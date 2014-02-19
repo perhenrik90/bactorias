@@ -11,6 +11,7 @@ function createPlayerModel()
 	obj.ypos   	= 0;
 	obj.yforce 	= 0;
 	obj.yforcemax	= 4;
+	obj.type	= "player"
 	obj.imgid = "playerbact";
 
 
