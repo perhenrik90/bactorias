@@ -1,0 +1,28 @@
+<!DOCTYPE html>
+<html>
+<head>
+	<meta charset="utf8"/>
+	<link rel="stylesheet" type="text/css" href="css/main.css"/>
+	<link rel="stylesheet" type="text/css" href="css/play.css"/>
+
+	<script src="canvas.js"></script>
+	<script src="playermodel.js"></script>
+	<script src="worldmodel.js"> </script>
+</head>
+<body>
+	<h1>Spillet er over</h1>
+	<p id="pointsParagraph"></p>
+	<p class="button" onclick="newGame();">Nytt spill</p>
+	
+	<script>
+		p = document.getElementById("pointsParagraph");
+		points = window.sessionStorage.getItem("points");
+		p.innerHTML = "Din poengsum: "+points;
+
+		function newGame()
+		{
+			window.location.href = "play.html";
+		}
+	</script>
+</body>
+</html>

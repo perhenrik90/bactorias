@@ -8,9 +8,10 @@ blockWidth = 64;
 blockHeight = 64;
 viewUpdateGap = 100;
 
-function gameCanvas( canvas )
+function gameCanvas( canvas, callBack )
 {
 	running = true;
+	score	= 0;
 
 	xLast = 32;
 	yLast = 12;
@@ -103,10 +104,16 @@ function gameCanvas( canvas )
 	{
 		if(running)
 		{
-			player.updateForce();
+			/** update player force and gather score **/
+			xscore = player.updateForce();
+			score += xscore;
 		}
 		else
 		{
+			if(callBack)
+			{
+				callBack(score);
+			}
 			drawGameOver();
 		}
 			

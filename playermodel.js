@@ -47,6 +47,9 @@ function createPlayerModel()
 		obj.ypos += obj.yforce;
 		obj.xpos += obj.xforce;
 		if(this.onDraw){this.onDraw();}
+
+		// return a score
+		return obj.xforce;
 	}	
 	
 	// push the player upwards

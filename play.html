@@ -15,7 +15,12 @@
 	
 	<script>
 		canvas = document.getElementById("gamecanvas");
-		gameCanvas = gameCanvas(canvas);
+		function gameover(points)
+		{
+			window.sessionStorage.setItem("points", points);
+			window.location.href = "gameover.html";
+		}
+		gameCanvas = gameCanvas(canvas, gameover);
 	</script>
 
 </body>
