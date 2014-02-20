@@ -113,7 +113,6 @@ function gameCanvas( canvas )
 				return true;
 			}
 		}
-		console.log(xoffset+ " "+x+"\n"+yoffset+" "+y);
 		return c;
 	}
 
