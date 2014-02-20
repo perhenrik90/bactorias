@@ -16,7 +16,17 @@ function createWall(xpos, ypos)
 }
 
 
+function createBumbyWorld(length, xLast, yLast)
+{
+
+}
+
+//
+// MAIN WORLD FUNCTION
+//
+
 /** create a list of world elements **/
+
 function createWorld()
 {
 	worldArray = [];
