@@ -36,6 +36,7 @@ function gameCanvas( canvas )
 	{
 		ctx.clearRect( 0, 0, canvas.width, canvas.height);
 
+
 		x = player.xpos - viewposx;
 		y = player.ypos - viewposy;
 		i = player.imgid;
@@ -76,6 +77,19 @@ function gameCanvas( canvas )
 		updateView();
 	}
 
+
+	/** display game over **/
+	function drawGameOver()
+	{
+		gotext = "Spill over, trykk ctrl/cmd + r for å starte på nytt";
+		ctx.font = "30px Arial";
+		ys = canvas.height/2;
+		ctx.fillText(gotext, 100, ys);
+	}
+	
+		
+	
+
 	function updateView()
 	{
 		xrelative = player.xpos - viewposx; 	
@@ -91,11 +105,17 @@ function gameCanvas( canvas )
 		{
 			player.updateForce();
 		}
+		else
+		{
+			drawGameOver();
+		}
+			
 	}
 	setInterval(updateForce, updateRate);
 	player.onDraw = onDraw;
 	onDraw();	
 
+	/** check if one wall collide with player **/
 	function checkCollition( x, y )
 	{
 		var c = false;
@@ -144,3 +164,4 @@ function gameCanvas( canvas )
 	}	
 			
 }
+
