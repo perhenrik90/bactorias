@@ -36,15 +36,22 @@ function gameCanvas( canvas, callBack )
 	function onDraw()
 	{
 		ctx.clearRect( 0, 0, canvas.width, canvas.height);
-
-
-		x = player.xpos - viewposx;
-		y = player.ypos - viewposy;
-		i = player.imgid;
+		
+		//
+		// DRAW SCORE
+		//
+		ctx.font = "30px Arial";
+		ctx.fillStyle = "#000";
+		text = "Poeng: "+score;
+		ctx.fillText(text, 10,30);
 
 		//
 		// DRAW PLAYER
 		//
+		x = player.xpos - viewposx;
+		y = player.ypos - viewposy;
+		i = player.imgid;
+
 		img = new Image();
 		img.src = "img/bakterie.png";
 	
