@@ -10,7 +10,8 @@ function createPlayerModel()
 	obj.xpos   	= 0;
 	obj.ypos   	= 0;
 	obj.yforce 	= 0;
-	obj.yforcemax	= 4;
+	obj.yforcemax	= 6;
+	obj.ypush	= 4;
 	obj.xforce	= 3;
 	obj.type	= "player"
 	obj.imgid = "playerbact";
@@ -56,9 +57,9 @@ function createPlayerModel()
 	obj.pushForce = function()
 	{
 		yforce = parseInt( this.yforce);
-		if(yforce > -this.yforcemax)
+		if(yforce+this.ypush > -this.yforcemax)
 		{
-			obj.yforce -= 4;
+			this.yforce -= this.ypush;
 		}
 	}
 

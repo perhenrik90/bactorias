@@ -14,7 +14,20 @@
 	<canvas id="gamecanvas" width=800 height=600></canvas>
 	
 	<script>
-		canvas = document.getElementById("gamecanvas");
+		/** try to get canvas **/
+		try
+		{
+			canvas = document.getElementById("gamecanvas");
+		}	
+		catch(e)
+		{
+			str = "<h1>Din nettleser kan ikke kjøre spillet</h1>";
+			str += "<p>Vennligst prøv en annen nettleser</p>";
+			str += "<a href='https://www.google.com/intl/en/chrome/browser'<p>Chrome</p></a>";
+			document.write(str);
+		}
+
+		/** callback function when game is over **/
 		function gameover(points)
 		{
 			window.sessionStorage.setItem("points", points);
