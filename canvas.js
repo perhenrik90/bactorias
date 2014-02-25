@@ -38,14 +38,6 @@ function gameCanvas( canvas, callBack )
 		ctx.clearRect( 0, 0, canvas.width, canvas.height);
 		
 		//
-		// DRAW SCORE
-		//
-		ctx.font = "30px Arial";
-		ctx.fillStyle = "#000";
-		text = "Poeng: "+score;
-		ctx.fillText(text, 10,30);
-
-		//
 		// DRAW PLAYER
 		//
 		x = player.xpos - viewposx;
@@ -82,6 +74,15 @@ function gameCanvas( canvas, callBack )
 			}
 
 		}
+		//
+		// DRAW SCORE
+		//
+		ctx.font = "30px Arial";
+		ctx.fillStyle = "#000";
+		text = "Poeng: "+score;
+		ctx.fillText(text, 10,30);
+
+	
 		updateView();
 	}
 
